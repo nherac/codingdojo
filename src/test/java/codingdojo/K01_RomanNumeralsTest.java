@@ -17,8 +17,18 @@ class K01_RomanNumeralsTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/K01_RomanNumeral_01Test_number_letter")
     void testName(int number, String letter) {
-        assertEquals(letter,translate(number));
+        assertEquals(letter,translatorWithArray(number));
 
     }
+
+    @DisplayName("Given-When-Then")
+    @ParameterizedTest
+    @CsvFileSource(resources = "/K01_RomanNumeral_01Test_number_letter")
+    void testName2(int number, String letter) {
+        assertEquals(letter,translatorWithList(number));
+
+    }
+
+
 
 }
