@@ -25,7 +25,7 @@ class K01_RomanNumeralsTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/K01_RomanNumeral_01Test_number_letter")
     void testName2(int number, String letter) {
-        assertEquals(letter,translatorWithList(number));
+        assertEquals(letter, getRomanNumberDynamic(number));
 
     }
 
