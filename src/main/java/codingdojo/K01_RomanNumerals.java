@@ -49,6 +49,7 @@ public class K01_RomanNumerals {
             }
             if((number>=600) && (number<900)){
                 int numOfCent = (number/100)-5;
+                result.append("D");
                 for (int i = 1; i <=numOfCent ; i++) {
                     result.append("C");
                 }
@@ -74,6 +75,7 @@ public class K01_RomanNumerals {
                 number = number % 90;
             }
             if(number<90  && number>50){
+                result.append("L");
                 int numberOfDec = (number/10)-5;
                 for (int i = 1; i <=numberOfDec ; i++) {
                     result.append("X");
