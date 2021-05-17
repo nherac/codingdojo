@@ -2,38 +2,35 @@ package codingdojo;
 
 //https://codingdojo.org/kata/RomanNumerals/
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class K01_RomanNumerals {
-    //brute force solution until 4000 items.
-    //populate an array or ArrayList with 4000 items. Because Array access by index, then, each index would be the
-    //number.
-    static String[] translatorArray1 = {"","I","II", "III", "IV","V", "VI","MMMM"};
-    List translatorWithList = List.of("", "I","II", "III", "V" ,"IV", "VI","MMMM");
 
+    private static String[] cache;
+    private static int MAX_ROMAN_NUMBERS = 4001;
 
-    public static String translatorWithArray(int numberIWantToConvert) {
-        // populate the array
-        return translatorArray[numberIWantToConvert];
-
-    }
-
-    public static String translatorWithList(int numberIWantToConvert){
-        return translatorWithList(numberIWantToConvert);
-    }
-
-    static int maxNumber = 4000+1;
-    static String[] translatorArray = new String[maxNumber];
-    public static void populateArray(){
-
-        for(int i=1;i<=maxNumber;i++){
-            translatorArray[i] = getRomanNumberDynamic(i);
-
+    public static String getRomanNumber(int number){
+        if(cache == null){
+            cache = new String[MAX_ROMAN_NUMBERS];
         }
+        if(cache[number] == null){
+            var result = getRomanNumberDynamic(number);
+            cache[number] = result;
+            return result;
+        }
+        else
+            return cache[number];
 
     }
 
-    public static String getRomanNumberDynamic(int number){
+    public static int sizeCache(){
+        return cache.length;
+    }
+
+
+
+    private static String getRomanNumberDynamic(int number){
         StringBuilder result = new StringBuilder("");
         while(number>0){
             if(number>=1000){
